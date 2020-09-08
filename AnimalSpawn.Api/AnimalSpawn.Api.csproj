@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnimalSpawn.Domain\AnimalSpawn.Domain.csproj" />
+    <ProjectReference Include="..\AnimalSpawn.Infraestructure\AnimalSpawn.Infraestructure.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+</Project>

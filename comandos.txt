@@ -1,0 +1,5 @@
+dotnet run sln //creacion de una solucion en blanco
+dotnet new classlib -o nombreproyecto // creacion de libreria de clases 
+dotnet sln add nombreproyecto/nombreproyecto.csproj // agrega un proyecto a la solucion
+dotnet add nombreproyecto/nombreproyecto.csproj reference nombreproyecto/nombreproyecto.csproj //agrega una referencia a un proyecto
+dotnet add package nombrepaquete // agrega un paquete nugget a la solucion
