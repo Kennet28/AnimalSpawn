@@ -1,3 +1,6 @@
 .txt
 obj
 bin
+.exe
+.vscode
+.log
