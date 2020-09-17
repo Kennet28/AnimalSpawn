@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AnimalSpawn.Domain.Entities;
-
+using System.Threading.Tasks;
+using AnimalSpawn.Domain.Interfaces;
 namespace AnimalSpawn.Infraestructure.Repositories
 {
-    public class AnimalRepository
+    public class AnimalRepository:IAnimalRepository
     {
-        public IEnumerable<Animal> GetAnimals()
+        public async Task<IEnumerable<Animal>> GetAnimals()
         {
             var animals = Enumerable.Range(1, 10).Select(x => new Animal
             {
@@ -20,6 +21,7 @@ namespace AnimalSpawn.Infraestructure.Repositories
                 Height = Math.Round(DateTime.Now.Minute * 1.16, 2),
                 Weight = Math.Round(DateTime.Now.Minute * 4.5, 2)
             });
+            await Task.Delay(10);
             return animals;
         }
     }
