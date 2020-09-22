@@ -7,5 +7,6 @@ namespace AnimalSpawn.Domain.Interfaces
     public interface IAnimalRepository
     {
          Task<IEnumerable<Animal>> GetAnimals();
+         Task<IEnumerable<Genus>> GetGenus();
     }
 }

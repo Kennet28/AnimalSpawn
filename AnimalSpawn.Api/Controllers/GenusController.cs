@@ -1,25 +1,30 @@
+
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AnimalSpawn.Domain.Interfaces;
-using System.Threading.Tasks;
 using AnimalSpawn.Infraestructure.Repositories;
 
 namespace AnimalSpawn.Api.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
-    public class AnimalController : ControllerBase
+    public class GenusController : ControllerBase
     {
         private readonly IAnimalRepository _repository;
-        public AnimalController(IAnimalRepository repository)
+
+        // private readonly AnimalSpawnContext _context;
+        public GenusController(IAnimalRepository repository)
         {
-            this._repository = repository;
+            _repository=repository;
         }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var animals = await _repository.GetAnimals();
-            return Ok(animals);
+            var Genus = await _repository.GetGenus();
+            return Ok(Genus);
         }
+
+        
     }
 }

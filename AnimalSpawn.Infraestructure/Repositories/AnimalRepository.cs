@@ -4,25 +4,27 @@ using System.Linq;
 using AnimalSpawn.Domain.Entities;
 using System.Threading.Tasks;
 using AnimalSpawn.Domain.Interfaces;
+using AnimalSpawn.Infraestructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AnimalSpawn.Infraestructure.Repositories
 {
     public class AnimalRepository:IAnimalRepository
     {
+        private readonly AnimalSpawnContext _Context;
+        public AnimalRepository(AnimalSpawnContext context)
+        {
+            _Context = context;
+        }
         public async Task<IEnumerable<Animal>> GetAnimals()
         {
-            var animals = Enumerable.Range(1, 10).Select(x => new Animal
-            {
-                Name = $"animal-{x}",
-                CaptureCondition = "Good",
-                CaptureDate = DateTime.Now,
-                Description = $"Description of animal-{x}",
-                EstimatedAge = (int)Math.Truncate(DateTime.Now.Minute * 2.5),
-                Gender = x % 2 == 0,
-                Height = Math.Round(DateTime.Now.Minute * 1.16, 2),
-                Weight = Math.Round(DateTime.Now.Minute * 4.5, 2)
-            });
-            await Task.Delay(10);
-            return animals;
+            
+            return await _Context.Animal.ToListAsync();
+        }
+        public async Task<IEnumerable<Genus>> GetGenus()
+        {
+            
+            return await _Context.Genus.ToListAsync();
         }
     }
 }

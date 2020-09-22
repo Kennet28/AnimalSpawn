@@ -3,3 +3,4 @@ dotnet new classlib -o nombreproyecto // creacion de libreria de clases
 dotnet sln add nombreproyecto/nombreproyecto.csproj // agrega un proyecto a la solucion
 dotnet add nombreproyecto/nombreproyecto.csproj reference nombreproyecto/nombreproyecto.csproj //agrega una referencia a un proyecto
 dotnet add package nombrepaquete // agrega un paquete nugget a la solucion
+dotnet ef dbcontext scaffold "Server=DESKTOP-B136JPE\UNIVERSIDAD;Database=AnimalSpawn;user id=KennetAvila;password=123456" Microsoft.EntityFrameworkCore.SqlServer -o DbContext -s ../AnimalSpawn.Api //dbcontext Scaffold 
