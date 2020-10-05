@@ -10,10 +10,10 @@ namespace AnimalSpawn.Api.Controllers
     [ApiController]
     public class GenusController : ControllerBase
     {
-        private readonly IAnimalRepository _repository;
+        private readonly IGenusRepository _repository;
 
         // private readonly AnimalSpawnContext _context;
-        public GenusController(IAnimalRepository repository)
+        public GenusController(IGenusRepository repository)
         {
             _repository=repository;
         }
@@ -21,10 +21,15 @@ namespace AnimalSpawn.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var Genus = await _repository.GetGenus();
+            var Genus = await _repository.GetAllGenus();
             return Ok(Genus);
         }
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var animal = await _repository.GetGenus(id);
+            return Ok(animal);
+        }
 
-        
     }
 }

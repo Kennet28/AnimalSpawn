@@ -1,0 +1,22 @@
+﻿using System;
+
+namespace AnimalSpawn.Domain.DTOs
+{
+    public class AnimalResponseDto
+    {
+        public int Id { get; set; }
+        public int SpeciesId { get; set; }
+        public int FamilyId { get; set; }
+        public int GenusId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool Gender { get; set; }
+        public DateTime CaptureDate { get; set; }
+        public string CaptureCondition { get; set; }
+        public float Weight { get; set; }
+        public float Height { get; set; }
+        public int EstimatedAge { get; set; }
+
+        
+    }
+}

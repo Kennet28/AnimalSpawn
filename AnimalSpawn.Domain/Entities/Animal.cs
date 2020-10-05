@@ -32,7 +32,7 @@ namespace AnimalSpawn.Domain.Entities
         public virtual Family Family { get; set; }
         public virtual Genus Genus { get; set; }
         public virtual Species Species { get; set; }
-        // public virtual RfidTag RfidTag { get; set; }
+        public virtual RfidTag RfidTag { get; set; }
         public virtual ICollection<Photo> Photo { get; set; }
         public virtual ICollection<Sighting> Sighting { get; set; }
     }

@@ -27,7 +27,7 @@ namespace AnimalSpawn.Domain.Entities
         public bool? Status { get; set; }
 
         public virtual ProtectedArea ProtectedArea { get; set; }
-        // public virtual UserAccount UserAccount { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
         public virtual ICollection<Sighting> Sighting { get; set; }
     }
 }

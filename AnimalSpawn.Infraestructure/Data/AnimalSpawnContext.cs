@@ -1,7 +1,6 @@
-﻿using System;
-using AnimalSpawn.Domain.Entities;
+﻿using AnimalSpawn.Domain.Entities;
+using AnimalSpawn.Infraestructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AnimalSpawn.Infraestructure.Data
 {
@@ -24,6 +23,22 @@ namespace AnimalSpawn.Infraestructure.Data
         public virtual DbSet<Sighting> Sighting { get; set; }
         public virtual DbSet<Species> Species { get; set; }
         public virtual DbSet<UserAccount> UserAccount { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AnimalConfiguration());
+            modelBuilder.ApplyConfiguration(new CountryConfiguration());
+            modelBuilder.ApplyConfiguration(new FamilyConfiguration());
+            modelBuilder.ApplyConfiguration(new GenusConfiguration());
+            modelBuilder.ApplyConfiguration(new PhotoConfiguration());
+            modelBuilder.ApplyConfiguration(new ProtectedAreaConfiguration());
+            modelBuilder.ApplyConfiguration(new ResearcherConfiguration());
+            modelBuilder.ApplyConfiguration(new RfidTagConfiguration());
+            modelBuilder.ApplyConfiguration(new SightingConfiguration());
+            modelBuilder.ApplyConfiguration(new SpeciesConfiguration());
+            modelBuilder.ApplyConfiguration(new UserAcountConfiguration());
+        }
+
 
     }
 }
