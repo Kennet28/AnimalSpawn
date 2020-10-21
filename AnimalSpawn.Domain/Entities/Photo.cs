@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AnimalSpawn.Domain.Entities
 
 {
-    public partial class Photo
+    public partial class Photo : BaseEntity
     {
         public int Id { get; set; }
         public string FileName { get; set; }

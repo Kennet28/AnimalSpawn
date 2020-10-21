@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalSpawn.Domain", "AnimalSpawn.Domain\AnimalSpawn.Domain.csproj", "{ACD660A3-681E-4304-A1D7-BCB90D9531FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalSpawn.Domain", "AnimalSpawn.Domain\AnimalSpawn.Domain.csproj", "{ACD660A3-681E-4304-A1D7-BCB90D9531FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalSpawn.Infraestructure", "AnimalSpawn.Infraestructure\AnimalSpawn.Infraestructure.csproj", "{4F08FCF3-4FDE-4808-8E8D-29866D3C5115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalSpawn.Infraestructure", "AnimalSpawn.Infraestructure\AnimalSpawn.Infraestructure.csproj", "{4F08FCF3-4FDE-4808-8E8D-29866D3C5115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalSpawn.Api", "AnimalSpawn.Api\AnimalSpawn.Api.csproj", "{8C89B598-99F8-4BCA-BB38-8A897AD2F565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalSpawn.Api", "AnimalSpawn.Api\AnimalSpawn.Api.csproj", "{8C89B598-99F8-4BCA-BB38-8A897AD2F565}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalSpawn.Application", "AnimalSpawn.Application\AnimalSpawn.Application.csproj", "{28D2CAB7-52B4-4472-A1C3-02E948578F74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ACD660A3-681E-4304-A1D7-BCB90D9531FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +57,23 @@ Global
 		{8C89B598-99F8-4BCA-BB38-8A897AD2F565}.Release|x64.Build.0 = Release|Any CPU
 		{8C89B598-99F8-4BCA-BB38-8A897AD2F565}.Release|x86.ActiveCfg = Release|Any CPU
 		{8C89B598-99F8-4BCA-BB38-8A897AD2F565}.Release|x86.Build.0 = Release|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Debug|x64.Build.0 = Debug|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Debug|x86.Build.0 = Debug|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Release|x64.ActiveCfg = Release|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Release|x64.Build.0 = Release|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Release|x86.ActiveCfg = Release|Any CPU
+		{28D2CAB7-52B4-4472-A1C3-02E948578F74}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22BE97D4-61C0-4AC0-9E57-EE96216DD1D4}
 	EndGlobalSection
 EndGlobal

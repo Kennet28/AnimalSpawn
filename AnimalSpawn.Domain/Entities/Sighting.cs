@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AnimalSpawn.Domain.Entities
 
 {
-    public partial class Sighting
+    public partial class Sighting : BaseEntity
     {
         public int Id { get; set; }
         public DateTime RegisterDate { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AnimalSpawn.Domain.Entities
 
 {
-    public partial class Species
+    public partial class Species : BaseEntity
     {
         public Species()
         {

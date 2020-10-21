@@ -15,18 +15,18 @@ namespace AnimalSpawn.Api.Controllers
     [ApiController]
     public class AnimalController : ControllerBase
     {
-        private readonly IAnimalRepository _repository;
+        private readonly IAnimalService _service;
         private readonly IMapper _mapper;
 
-        public AnimalController(IAnimalRepository repository, IMapper mapper)
+        public AnimalController(IAnimalService service, IMapper mapper)
         {
-            _repository = repository;
+            _service = service;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var animals = await _repository.GetAnimals();
+            var animals = await _service.GetAnimals();
             var animalsDto = _mapper.Map<IEnumerable<Animal>, IEnumerable<AnimalResponseDto>>(animals);
             var response = new ApiResponse<IEnumerable<AnimalResponseDto>>(animalsDto);
             return Ok(response);
@@ -34,7 +34,7 @@ namespace AnimalSpawn.Api.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
-            var animal = await _repository.GetAnimal(id);
+            var animal = await _service.GetAnimal(id);
             var animalDto = _mapper.Map<Animal, AnimalResponseDto>(animal);
             var response = new ApiResponse<AnimalResponseDto>(animalDto);
             return Ok(response);
@@ -43,7 +43,7 @@ namespace AnimalSpawn.Api.Controllers
         public async Task<IActionResult> Post(AnimalRequestDto animalDto)
         {
             var animal = _mapper.Map<AnimalRequestDto, Animal>(animalDto);
-            await _repository.AddAnimal(animal);
+            await _service.AddAnimal(animal);
             var animalresponseDto = _mapper.Map<Animal, AnimalResponseDto>(animal);
             var response = new ApiResponse<AnimalResponseDto>(animalresponseDto);
             return Ok(response);
@@ -51,8 +51,8 @@ namespace AnimalSpawn.Api.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var result = await _repository.DeleteAnimal(id);
-            var response = new ApiResponse<bool>(result);
+            await _service.DeleteAnimal(id);
+            var response = new ApiResponse<bool>(true);
             return Ok(response);
         }
 
@@ -63,8 +63,8 @@ namespace AnimalSpawn.Api.Controllers
             animal.Id = id;
             animal.UpdateAt = DateTime.Now;
             animal.UpdatedBy = 2;
-            var result = await _repository.UpdateAnimal(animal);
-            var response = new ApiResponse<bool>(result);
+             await _service.UpdateAnimal(animal);
+            var response = new ApiResponse<bool>(true);
             return Ok(response);
         }
     }

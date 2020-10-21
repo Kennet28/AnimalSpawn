@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AnimalSpawn.Domain.Entities
 {
-    public partial class Family
+    public partial class Family : BaseEntity
     {
         public Family()
         {
