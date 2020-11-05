@@ -17,5 +17,9 @@ namespace AnimalSpawn.Domain.DTOs
         public float Weight { get; set; }
         public float Height { get; set; }
         public int EstimatedAge { get; set; }
+        public string RfidTag { get; set; }
+        public DateTime DateEstablished { get; set; }
+        public int ProtectedAreaId { get; set; }
+
     }
 }

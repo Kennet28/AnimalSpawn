@@ -3,17 +3,11 @@ using AnimalSpawn.Domain.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalSpawn.Domain.Interfaces
 {
-    public interface IAnimalService
+    public interface IAnimalRepository:IRepository<Animal>
     {
-        Task AddAnimal(Animal animal);
-        Task DeleteAnimal(int id);
         IEnumerable<Animal> GetAnimals(AnimalQueryFilter filter);
-        Task<Animal> GetAnimal(int id);
-        void UpdateAnimal(Animal animal);
-
     }
 }

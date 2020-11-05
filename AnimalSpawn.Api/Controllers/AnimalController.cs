@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using AnimalSpawn.Api.Responses;
+using AnimalSpawn.Domain.QueryFilters;
+using System.Net;
 
 namespace AnimalSpawn.Api.Controllers
 {
@@ -24,9 +26,11 @@ namespace AnimalSpawn.Api.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<AnimalResponseDto>>))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<AnimalResponseDto>>))]
+        public IActionResult Get([FromQuery] AnimalQueryFilter filter)
         {
-            var animals = await _service.GetAnimals();
+            var animals = _service.GetAnimals(filter);
             var animalsDto = _mapper.Map<IEnumerable<Animal>, IEnumerable<AnimalResponseDto>>(animals);
             var response = new ApiResponse<IEnumerable<AnimalResponseDto>>(animalsDto);
             return Ok(response);
@@ -57,13 +61,13 @@ namespace AnimalSpawn.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int id, AnimalRequestDto animalDto)
+        public IActionResult Put(int id, AnimalRequestDto animalDto)
         {
             var animal = _mapper.Map<Animal>(animalDto);
             animal.Id = id;
             animal.UpdateAt = DateTime.Now;
             animal.UpdatedBy = 2;
-             await _service.UpdateAnimal(animal);
+            _service.UpdateAnimal(animal);
             var response = new ApiResponse<bool>(true);
             return Ok(response);
         }

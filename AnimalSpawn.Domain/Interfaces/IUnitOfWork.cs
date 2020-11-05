@@ -1,4 +1,5 @@
 ﻿using AnimalSpawn.Domain.Entities;
+using AnimalSpawn.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace AnimalSpawn.Domain.Interfaces
 {
     public interface IUnitOfWork:IDisposable
     {
-        public IRepository<Animal> AnimalRepository { get; }
+        public IAnimalRepository AnimalRepository { get; }
         public IRepository<Country> CountryRepository { get; }
         public IRepository<Family> FamilyRepository { get; }
         public IRepository<Genus> GenusRepository { get; }

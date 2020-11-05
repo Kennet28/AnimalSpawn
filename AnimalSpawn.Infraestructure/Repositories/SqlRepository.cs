@@ -23,8 +23,7 @@ namespace AnimalSpawn.Infraestructure.Repositories
         public async Task Add(T entity)
         {
             if (entity == null) throw new ArgumentNullException("Entity");
-            _entities.Add(entity);
-            await _context.SaveChangesAsync();
+            await _entities.AddAsync(entity);
         }
 
         public async Task Delete(int id)
@@ -32,19 +31,18 @@ namespace AnimalSpawn.Infraestructure.Repositories
             if (id <= 0) throw new ArgumentNullException("Entity");
             var entity = await GetById(id);
             _entities.Remove(entity);
-            await _context.SaveChangesAsync();
-
         }
 
-        public async Task<IEnumerable<T>> FindByCondition(Expression<Func<T, bool>> expression)
-        {
-            return await _entities.Where(expression).AsNoTracking().ToListAsync();
 
+        public IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        {
+            return _entities.Where(expression).AsNoTracking().AsEnumerable();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+
+        public IEnumerable<T> GetAll()
         {
-            return await _entities.AsNoTracking().ToListAsync();
+            return _entities.AsNoTracking().AsEnumerable();
         }
 
         public async Task<T> GetById(int id)
@@ -52,12 +50,12 @@ namespace AnimalSpawn.Infraestructure.Repositories
             return await _entities.AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task Update(T entity)
+        public void Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException("Entity");
             if (entity.Id <= 0) throw new ArgumentNullException("Entity");
             _entities.Update(entity);
-            await _context.SaveChangesAsync();
         }
+
     }
 }
