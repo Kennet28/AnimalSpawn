@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AnimalSpawn.Infraestructure.Repositories
@@ -16,14 +17,14 @@ namespace AnimalSpawn.Infraestructure.Repositories
         private readonly DbSet<T> _entities;
         public SQLRepository(AnimalSpawnContext context)
         {
-            _context = context;
-            _entities = context.Set<T>();
+            this._context = context;
+            this._entities = context.Set<T>();
         }
-
         public async Task Add(T entity)
         {
             if (entity == null) throw new ArgumentNullException("Entity");
-            await _entities.AddAsync(entity);
+            _entities.Add(entity);
+            await _context.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
@@ -33,12 +34,10 @@ namespace AnimalSpawn.Infraestructure.Repositories
             _entities.Remove(entity);
         }
 
-
         public IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
             return _entities.Where(expression).AsNoTracking().AsEnumerable();
         }
-
 
         public IEnumerable<T> GetAll()
         {
@@ -56,6 +55,5 @@ namespace AnimalSpawn.Infraestructure.Repositories
             if (entity.Id <= 0) throw new ArgumentNullException("Entity");
             _entities.Update(entity);
         }
-
     }
 }

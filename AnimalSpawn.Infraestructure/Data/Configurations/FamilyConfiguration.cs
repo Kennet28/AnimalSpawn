@@ -7,21 +7,21 @@ using System.Text;
 
 namespace AnimalSpawn.Infraestructure.Data.Configurations
 {
-    public class FamilyConfiguration : IEntityTypeConfiguration<Family>
+    class FamilyConfiguration : IEntityTypeConfiguration<Family>
     {
         public void Configure(EntityTypeBuilder<Family> builder)
         {
-            builder.ToTable("Family", "dbo");
-
             builder.Property(e => e.Code)
-                .HasMaxLength(15)
-                .IsUnicode(false);
+                   .HasMaxLength(15)
+                   .IsUnicode(false);
 
             builder.Property(e => e.CommonName)
                 .HasMaxLength(150)
                 .IsUnicode(false);
 
             builder.Property(e => e.CreateAt).HasColumnType("datetime");
+
+            builder.Property(e => e.Status).HasDefaultValueSql("((1))");
 
             builder.Property(e => e.UpdateAt).HasColumnType("datetime");
         }

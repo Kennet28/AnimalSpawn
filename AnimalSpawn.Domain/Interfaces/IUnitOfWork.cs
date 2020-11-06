@@ -1,5 +1,4 @@
 ﻿using AnimalSpawn.Domain.Entities;
-using AnimalSpawn.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +19,8 @@ namespace AnimalSpawn.Domain.Interfaces
         public IRepository<Sighting> SightingRepository { get; }
         public IRepository<Species> SpeciesRepository { get; }
         public IRepository<UserAccount> UserAccountRepository { get; }
-        public void SaveChanges();
-        public Task SaveChangesAsync();
+
+        void SaveChanges();
+        Task SavechangesAsync();
     }
 }

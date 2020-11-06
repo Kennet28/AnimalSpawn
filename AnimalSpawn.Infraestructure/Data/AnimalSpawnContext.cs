@@ -1,11 +1,16 @@
-﻿using AnimalSpawn.Domain.Entities;
+﻿using System;
+using AnimalSpawn.Domain.Entities;
 using AnimalSpawn.Infraestructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AnimalSpawn.Infraestructure.Data
 {
     public partial class AnimalSpawnContext : DbContext
     {
+        public AnimalSpawnContext()
+        {
+        }
 
         public AnimalSpawnContext(DbContextOptions<AnimalSpawnContext> options)
             : base(options)
@@ -23,22 +28,21 @@ namespace AnimalSpawn.Infraestructure.Data
         public virtual DbSet<Sighting> Sighting { get; set; }
         public virtual DbSet<Species> Species { get; set; }
         public virtual DbSet<UserAccount> UserAccount { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new AnimalConfiguration());
-            modelBuilder.ApplyConfiguration(new CountryConfiguration());
-            modelBuilder.ApplyConfiguration(new FamilyConfiguration());
-            modelBuilder.ApplyConfiguration(new GenusConfiguration());
-            modelBuilder.ApplyConfiguration(new PhotoConfiguration());
-            modelBuilder.ApplyConfiguration(new ProtectedAreaConfiguration());
-            modelBuilder.ApplyConfiguration(new ResearcherConfiguration());
-            modelBuilder.ApplyConfiguration(new RfidTagConfiguration());
-            modelBuilder.ApplyConfiguration(new SightingConfiguration());
-            modelBuilder.ApplyConfiguration(new SpeciesConfiguration());
-            modelBuilder.ApplyConfiguration(new UserAcountConfiguration());
-        }
-
-
+            modelBuilder.ApplyConfiguration<Animal>(new AnimalConfiguration());
+            modelBuilder.ApplyConfiguration<Country>(new CountryConfiguration());
+            modelBuilder.ApplyConfiguration<Family>(new FamilyConfiguration());
+            modelBuilder.ApplyConfiguration<Genus>(new GenusConfiguration());
+            modelBuilder.ApplyConfiguration<Photo>(new PhotoConfiguration());
+            modelBuilder.ApplyConfiguration<ProtectedArea>(new ProtectedAreaConfiguration());
+            modelBuilder.ApplyConfiguration<Researcher>(new ResearcherConfiguration());
+            modelBuilder.ApplyConfiguration<RfidTag>(new RfidTagConfiguration());
+            modelBuilder.ApplyConfiguration<Sighting>(new SightingConfiguration());
+            modelBuilder.ApplyConfiguration<Species>(new SpeciesConfiguration());
+            modelBuilder.ApplyConfiguration<UserAccount>(new UserAccountConfiguration());
+        }        
     }
 }

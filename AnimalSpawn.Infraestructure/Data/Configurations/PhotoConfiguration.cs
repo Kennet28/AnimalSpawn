@@ -7,17 +7,17 @@ using System.Text;
 
 namespace AnimalSpawn.Infraestructure.Data.Configurations
 {
-    public class PhotoConfiguration : IEntityTypeConfiguration<Photo>
+    class PhotoConfiguration : IEntityTypeConfiguration<Photo>
     {
         public void Configure(EntityTypeBuilder<Photo> builder)
         {
-            builder.ToTable("Photo", "dbo");
-
             builder.Property(e => e.CreateAt).HasColumnType("datetime");
 
             builder.Property(e => e.FileName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+
+            builder.Property(e => e.Status).HasDefaultValueSql("((1))");
 
             builder.Property(e => e.UpdateAt).HasColumnType("datetime");
 

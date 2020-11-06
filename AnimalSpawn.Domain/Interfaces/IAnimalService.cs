@@ -1,8 +1,6 @@
 ﻿using AnimalSpawn.Domain.Entities;
 using AnimalSpawn.Domain.QueryFilters;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AnimalSpawn.Domain.Interfaces
@@ -14,6 +12,5 @@ namespace AnimalSpawn.Domain.Interfaces
         IEnumerable<Animal> GetAnimals(AnimalQueryFilter filter);
         Task<Animal> GetAnimal(int id);
         void UpdateAnimal(Animal animal);
-
     }
 }

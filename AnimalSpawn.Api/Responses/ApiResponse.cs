@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace AnimalSpawn.Api.Responses
 {
-
     public class ApiResponse<T>
     {
-        public T Data { get; private set; }
         public ApiResponse(T data)
         {
             Data = data;
         }
-
+        public T Data { get; private set; }
     }
 }

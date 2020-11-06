@@ -8,6 +8,6 @@ namespace AnimalSpawn.Domain.Interfaces
 {
     public interface IAnimalRepository:IRepository<Animal>
     {
-        IEnumerable<Animal> GetAnimals(AnimalQueryFilter filter);
+        public IEnumerable<Animal> GetAnimals(AnimalQueryFilter filter);
     }
 }

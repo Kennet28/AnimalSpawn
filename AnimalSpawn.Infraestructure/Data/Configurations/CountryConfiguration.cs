@@ -7,15 +7,13 @@ using System.Text;
 
 namespace AnimalSpawn.Infraestructure.Data.Configurations
 {
-    public class CountryConfiguration : IEntityTypeConfiguration<Country>
+    class CountryConfiguration : IEntityTypeConfiguration<Country>
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {
-            builder.ToTable("Country", "dbo");
-
             builder.Property(e => e.Code)
-                .HasMaxLength(25)
-                .IsUnicode(false);
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
 
             builder.Property(e => e.CreateAt).HasColumnType("datetime");
 
@@ -27,6 +25,8 @@ namespace AnimalSpawn.Infraestructure.Data.Configurations
             builder.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+
+            builder.Property(e => e.Status).HasDefaultValueSql("((1))");
 
             builder.Property(e => e.UpdateAt).HasColumnType("datetime");
         }

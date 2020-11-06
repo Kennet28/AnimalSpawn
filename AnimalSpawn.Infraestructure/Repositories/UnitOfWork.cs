@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace AnimalSpawn.Infraestructure.Repositories
 {
-    public class UnitOfWork : IUnitOfWork
+    public sealed class UnitOfWork : IUnitOfWork
     {
         private readonly AnimalSpawnContext _context;
-        public UnitOfWork(AnimalSpawnContext context)
-        {
-            this._context = context;
-        }
+
         private readonly IAnimalRepository _animalRepository;
         private readonly IRepository<Country> _countryRepository;
         private readonly IRepository<Family> _familyRepository;
@@ -26,30 +23,36 @@ namespace AnimalSpawn.Infraestructure.Repositories
         private readonly IRepository<Sighting> _sightingRepository;
         private readonly IRepository<Species> _speciesRepository;
         private readonly IRepository<UserAccount> _userAccountRepository;
-//        public IRepository<Animal> AnimalRepository => _animalRepository ?? new
-//SQLRepository<Animal>(_context);
-        public IRepository<Country> CountryRepository => _countryRepository ?? new
-       SQLRepository<Country>(_context);
-        public IRepository<Family> FamilyRepository => _familyRepository ?? new
-       SQLRepository<Family>(_context);
-        public IRepository<Genus> GenusRepository => _genusRepository ?? new
-       SQLRepository<Genus>(_context);
-        public IRepository<Photo> PhotoRepository => _photoRepository ?? new
-       SQLRepository<Photo>(_context);
-        public IRepository<ProtectedArea> ProtectedAreaRepository => _protectedAreaRepository ?? new
-       SQLRepository<ProtectedArea>(_context);
-        public IRepository<Researcher> ResearcherRepository => _researcherRepository ?? new
-       SQLRepository<Researcher>(_context);
-        public IRepository<RfidTag> RfifTagRepository => _rfifTagRepository ?? new
-       SQLRepository<RfidTag>(_context);
-        public IRepository<Sighting> SightingRepository => _sightingRepository ?? new
-       SQLRepository<Sighting>(_context);
-        public IRepository<Species> SpeciesRepository => _speciesRepository ?? new
-       SQLRepository<Species>(_context);
-        public IRepository<UserAccount> UserAccountRepository => _userAccountRepository ??
-       new SQLRepository<UserAccount>(_context);
 
-        public IAnimalRepository AnimalRepository =>_animalRepository ?? new AnimalRepository(_context);
+        public UnitOfWork(AnimalSpawnContext context)
+        {
+            this._context = context;
+        }
+
+
+        public IAnimalRepository AnimalRepository => _animalRepository ?? new
+        AnimalRepository(_context);
+        public IRepository<Country> CountryRepository => _countryRepository ?? new
+        SQLRepository<Country>(_context);
+        public IRepository<Family> FamilyRepository => _familyRepository ?? new
+        SQLRepository<Family>(_context);
+        public IRepository<Genus> GenusRepository => _genusRepository ?? new
+        SQLRepository<Genus>(_context);
+        public IRepository<Photo> PhotoRepository => _photoRepository ?? new
+        SQLRepository<Photo>(_context);
+        public IRepository<ProtectedArea> ProtectedAreaRepository => _protectedAreaRepository ?? new
+        SQLRepository<ProtectedArea>(_context);
+        public IRepository<Researcher> ResearcherRepository => _researcherRepository ?? new
+        SQLRepository<Researcher>(_context);
+        public IRepository<RfidTag> RfifTagRepository => _rfifTagRepository ?? new
+        SQLRepository<RfidTag>(_context);
+        public IRepository<Sighting> SightingRepository => _sightingRepository ?? new
+        SQLRepository<Sighting>(_context);
+        public IRepository<Species> SpeciesRepository => _speciesRepository ?? new
+        SQLRepository<Species>(_context);
+        public IRepository<UserAccount> UserAccountRepository => _userAccountRepository ??
+        new SQLRepository<UserAccount>(_context);
+
 
         public void Dispose()
         {
@@ -62,10 +65,9 @@ namespace AnimalSpawn.Infraestructure.Repositories
             _context.SaveChanges();
         }
 
-        public async Task SaveChangesAsync()
+        public async Task SavechangesAsync()
         {
             await _context.SaveChangesAsync();
-
         }
     }
 }

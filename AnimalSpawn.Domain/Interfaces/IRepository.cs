@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace AnimalSpawn.Domain.Interfaces
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T:BaseEntity
     {
         Task Add(T entity);
         IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression);
-        IEnumerable<T> GetAll();
-        void Update(T entity);
         Task<T> GetById(int id);
+        IEnumerable<T> GetAll();
         Task Delete(int id);
+        void Update(T entity);
     }
-
 }

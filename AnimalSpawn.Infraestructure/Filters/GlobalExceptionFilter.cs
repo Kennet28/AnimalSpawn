@@ -30,8 +30,6 @@ namespace AnimalSpawn.Infraestructure.Filters
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 context.ExceptionHandled = true;
             }
-
         }
-
     }
 }

@@ -1,9 +1,6 @@
 ﻿using AnimalSpawn.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AnimalSpawn.Infraestructure.Data.Configurations
 {
@@ -11,11 +8,9 @@ namespace AnimalSpawn.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Animal> builder)
         {
-            builder.ToTable("Animal", "dbo");
-
             builder.Property(e => e.CaptureCondition)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
 
             builder.Property(e => e.CaptureDate).HasColumnType("datetime");
 
@@ -28,6 +23,8 @@ namespace AnimalSpawn.Infraestructure.Data.Configurations
             builder.Property(e => e.Name)
                 .HasMaxLength(250)
                 .IsUnicode(false);
+
+            builder.Property(e => e.Status).HasDefaultValueSql("((1))");
 
             builder.Property(e => e.UpdateAt).HasColumnType("datetime");
 
@@ -48,7 +45,6 @@ namespace AnimalSpawn.Infraestructure.Data.Configurations
                 .HasForeignKey(d => d.SpeciesId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Animal_0");
-
         }
     }
 }
