@@ -15,7 +15,7 @@ namespace AnimalSpawn.Infraestructure.Repositories
         {
             this._context = context;
         }
-        private readonly IRepository<Animal> _animalRepository;
+        private readonly IAnimalRepository _animalRepository;
         private readonly IRepository<Country> _countryRepository;
         private readonly IRepository<Family> _familyRepository;
         private readonly IRepository<Genus> _genusRepository;
@@ -26,8 +26,8 @@ namespace AnimalSpawn.Infraestructure.Repositories
         private readonly IRepository<Sighting> _sightingRepository;
         private readonly IRepository<Species> _speciesRepository;
         private readonly IRepository<UserAccount> _userAccountRepository;
-        public IRepository<Animal> AnimalRepository => _animalRepository ?? new
-SQLRepository<Animal>(_context);
+//        public IRepository<Animal> AnimalRepository => _animalRepository ?? new
+//SQLRepository<Animal>(_context);
         public IRepository<Country> CountryRepository => _countryRepository ?? new
        SQLRepository<Country>(_context);
         public IRepository<Family> FamilyRepository => _familyRepository ?? new
@@ -48,6 +48,9 @@ SQLRepository<Animal>(_context);
        SQLRepository<Species>(_context);
         public IRepository<UserAccount> UserAccountRepository => _userAccountRepository ??
        new SQLRepository<UserAccount>(_context);
+
+        public IAnimalRepository AnimalRepository =>_animalRepository ?? new AnimalRepository(_context);
+
         public void Dispose()
         {
             if (_context == null)

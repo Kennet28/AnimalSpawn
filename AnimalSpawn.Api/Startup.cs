@@ -40,7 +40,7 @@ namespace AnimalSpawn.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllers();
             services.AddControllers(options => options.Filters.Add<GlobalExceptionFilter>());
-            // services.AddDbContext<AnimalSpawnContext> (options => options.UseSqlServer(Configuration.GetConnectionString("BDCONECCTION")));
+            services.AddDbContext<AnimalSpawnContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BDCONECCTION")));
             services.AddScoped<AnimalSpawnContext>();
             services.AddTransient<IAnimalService, AnimalService>();
             services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));

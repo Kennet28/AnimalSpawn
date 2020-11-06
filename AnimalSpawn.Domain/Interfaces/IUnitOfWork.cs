@@ -20,7 +20,7 @@ namespace AnimalSpawn.Domain.Interfaces
         public IRepository<Sighting> SightingRepository { get; }
         public IRepository<Species> SpeciesRepository { get; }
         public IRepository<UserAccount> UserAccountRepository { get; }
-        void SaveChanges();
-        Task SaveChangesAsync();
+        public void SaveChanges();
+        public Task SaveChangesAsync();
     }
 }
